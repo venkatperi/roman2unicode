@@ -52,7 +52,7 @@ const BASE_ROMAN_TO_UNICODE: { [k in string]: number } = {
   ṣ: 55,
   s: 56,
   h: 57,
-  X: 77,
+  q: 77,
 };
 
 export const UNICODE_BLOCKS = {
