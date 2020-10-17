@@ -102,12 +102,13 @@ export function roman2unicode(
   while (idx < len) {
     for (let i = 2; i > 0; i--) {
       const s = input.substr(idx, i);
+      const u = BASE_ROMAN_TO_UNICODE[s];
 
       let found = false;
       if (isConsonant(prev)) {
         if (isConsonant(s)) {
           output.push(HALANT);
-          output.push(BASE_ROMAN_TO_UNICODE[s]);
+          output.push(u);
           found = true;
         } else if (MATRAS[s]) {
           if (MATRAS[s] > 0) {
@@ -115,8 +116,9 @@ export function roman2unicode(
           }
           found = true;
         }
-      } else if (BASE_ROMAN_TO_UNICODE[s] !== undefined) {
-        output.push(BASE_ROMAN_TO_UNICODE[s]);
+      } else if (u !== undefined) {
+        output.push(u);
+        if (s === "q") output.push(String.fromCharCode(0x200c));
         found = true;
       }
 
