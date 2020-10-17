@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Input, Select } from "antd";
 import { Row, Col } from "antd";
 import "antd/dist/antd.css";
