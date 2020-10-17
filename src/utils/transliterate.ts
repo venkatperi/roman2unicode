@@ -51,14 +51,15 @@ const BASE_ROMAN_TO_UNICODE: { [k in string]: number } = {
   š: 54,
   ṣ: 55,
   s: 56,
-  h: 57
+  h: 57,
+  X: 77,
 };
 
 export const UNICODE_BLOCKS = {
   devanagari: 0x900,
   telugu: 0xc00,
   gujarati: 0xa80,
-  bengali: 0x980
+  bengali: 0x980,
 };
 
 // noinspection NonAsciiCharacters,JSNonASCIINames
@@ -76,7 +77,7 @@ const MATRAS: { [k in string]: number } = {
   aʸ: 72,
   o: 74,
   ō: 75,
-  aʷ: 76
+  aʷ: 76,
 };
 
 const HALANT = 77;
@@ -85,15 +86,18 @@ function isConsonant(ch: string): boolean {
   return BASE_ROMAN_TO_UNICODE[ch] >= 21 && BASE_ROMAN_TO_UNICODE[ch] <= 57;
 }
 
-export function roman2unicode(input: string | undefined, block: number): string {
+export function roman2unicode(
+  input: string | undefined,
+  block: number
+): string {
   if (!input || input.length === 0) {
-    return '';
+    return "";
   }
 
   let idx = 0;
   const len = input.length;
   const output: (string | number)[] = [];
-  let prev = '';
+  let prev = "";
 
   while (idx < len) {
     for (let i = 2; i > 0; i--) {
@@ -129,5 +133,7 @@ export function roman2unicode(input: string | undefined, block: number): string 
     }
   }
 
-  return output.map(x => (typeof x === 'number' ? String.fromCharCode(x + block) : x)).join('');
+  return output
+    .map((x) => (typeof x === "number" ? String.fromCharCode(x + block) : x))
+    .join("");
 }
