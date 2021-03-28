@@ -90,9 +90,7 @@ export function roman2unicode(
   input: string | undefined,
   block: number
 ): string {
-  if (!input || input.length === 0) {
-    return "";
-  }
+  if (!input || input.length === 0) return "";
 
   let idx = 0;
   const len = input.length;
@@ -103,8 +101,8 @@ export function roman2unicode(
     for (let i = 2; i > 0; i--) {
       const s = input.substr(idx, i);
       const u = BASE_ROMAN_TO_UNICODE[s];
-
       let found = false;
+
       if (isConsonant(prev)) {
         if (isConsonant(s)) {
           output.push(HALANT);
@@ -117,7 +115,6 @@ export function roman2unicode(
       } else if (u !== undefined) {
         output.push(u);
         if (s === "q") output.push(String.fromCharCode(0x200c));
-
         found = true;
       }
 
