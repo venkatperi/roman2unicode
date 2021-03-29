@@ -78,6 +78,7 @@ const MATRAS: { [k in string]: number } = {
   o: 74,
   ō: 75,
   aʷ: 76,
+  ḽ: 98,
 };
 
 const HALANT = 77;
@@ -136,6 +137,7 @@ export function roman2unicode(
       }
     }
   }
+  console.log(output);
 
   return output
     .map((x) => (typeof x === "number" ? String.fromCharCode(x + block) : x))
